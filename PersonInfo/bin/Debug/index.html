@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="style.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type='text/javascript' src='knockout-3.2.0.js'></script>
+	<script type='text/javascript'>
+
+	function PersonInfoViewModel() {
+		this.firstName = ko.pureComputed(
+			{
+				read : function()
+				{
+					return window.external.Firstname;
+				},
+				write : function(value)
+				{
+					window.external.Firstname = value;
+				},
+				owner : this
+			});
+
+		this.lastName = ko.pureComputed(
+			{				
+				read : function()
+				{
+					return window.external.Lastname;
+				},
+				write : function(value)
+				{
+					window.external.Lastname = value;
+				},
+				owner : this
+			});
+
+		this.activity = ko.pureComputed(
+			{				
+				read : function()
+				{
+					return window.external.Activity;
+				},
+				write : function(value)
+				{
+					window.external.Activity = value;
+				},
+				owner : this
+			});
+	}
+
+
+	function applyBindings(){
+		ko.applyBindings(new PersonInfoViewModel());
+	}
+
+	$(function() {
+		applyBindings();
+	});
+
+</script>
+</head>
+
+<body>
+	<div id="content">
+		<table>
+			<tr><td><label>Firstname: </label></td> <td><input type="text" name="firstname" data-bind="value: firstName, valueUpdate: 'keyup'"></td></tr>
+			<tr><td><label>Lastname: </label></td> <td> <input type="text" name="lastname" data-bind="value: lastName, valueUpdate: 'keyup'"></td></tr>
+			<tr><td><label>What are you doing? </label></td> <td> <textarea cols="25" rows="5" name="activity" data-bind="value: activity, valueUpdate: 'keyup'"></td></tr>
+		</table>
+	</div>
+</body>
+</html>
