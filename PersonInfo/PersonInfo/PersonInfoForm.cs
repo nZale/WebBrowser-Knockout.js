@@ -33,7 +33,10 @@ namespace PersonInfo.PersonInfo
 
         private void SetupWebBrowser()
         {
+            //set the Url of the webBrowser to the local html file
             webBrowser1.Url = new Uri(String.Format("file:///{0}/index.html", Directory.GetCurrentDirectory()));
+
+            //set the class that will be updated by the web part
             webBrowser1.ObjectForScripting = Controller.ViewModel;
         }
     }

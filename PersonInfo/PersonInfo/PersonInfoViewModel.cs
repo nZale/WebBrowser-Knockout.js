@@ -9,7 +9,8 @@ using System.Runtime.InteropServices;
 
 namespace PersonInfo.PersonInfo
 {
-    [ComVisibleAttribute(true)]
+
+    [ComVisibleAttribute(true)] // add the ComVisibleAttribute so the class will be visible on by the web part
     public class PersonInfoViewModel : INotifyPropertyChanged
     {
         private string _firstName;
